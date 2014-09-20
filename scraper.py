@@ -424,7 +424,8 @@ parser = SwiftLGParser("Dun Laoghaire-Rathdown CC", "DLR", "http://planning.dlrc
 # results.save()
 
 #save results from 19/09/2013 > 2005
-today = datetime.date.today()
-for i in range(1826):
-   day = today - datetime.timedelta(days=365) - datetime.timedelta(days=i)
+#today = datetime.date.today()
+today = datetime.date(2009, 9, 20)
+for i in range(365):
+   day = today - datetime.timedelta(days=i)
    parser.saveResults(day.day, day.month, day.year)
