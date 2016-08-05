@@ -1,0 +1,4 @@
+BeautifulSoup==3.2.1
+dumptruck==0.1.6
+requests==2.10.0
+scraperwiki==0.3.7
