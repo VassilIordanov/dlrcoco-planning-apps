@@ -175,7 +175,7 @@ import cgi
 import re
 import datetime
 
-import BeautifulSoup
+from bs4 import BeautifulSoup
 
 import scraperwiki.utils
 
@@ -265,7 +265,7 @@ class SwiftLGParser:
 
         # Check for the no results warning
         if not contents.count("No Matching Applications Found"):
-            soup = BeautifulSoup.BeautifulSoup(contents)
+            soup = BeautifulSoup(contents, "html.parser")
 
             # Get the links to later pages of results.
             later_pages = soup.findAll("a", {"href": re.compile("WPHAPPSEARCHRES\.displayResultsURL.*StartIndex=\d*.*")})
@@ -298,7 +298,7 @@ class SwiftLGParser:
                     this_page_url = urlparse.urljoin(self.base_url, url)
                     response = urllib2.urlopen(this_page_url)
                     contents = response.read()
-                    soup = BeautifulSoup.BeautifulSoup(contents)
+                    soup = BeautifulSoup(contents)
 
                 results_table = self._findResultsTable(soup)#.body.find("table", {"class": "apas_tbl"})
 
